@@ -1,0 +1,15 @@
+.formWrapper {
+    @apply relative flex justify-center items-center w-full h-[calc(100vh-60px)];
+}
+
+.formWrapper-form {
+    @apply pt-[30px] pb-[10px] px-[35px] w-[350px] h-auto border-2 border-[--color-black] rounded-[20px];
+}
+
+.form-title {
+    @apply pb-[15px] text-[--color-black] text-[2rem] text-center font-bold;
+}
+
+.form-button {
+    @apply w-[100px] h-[35px] font-medium;
+}
