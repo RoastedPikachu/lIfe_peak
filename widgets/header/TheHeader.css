@@ -1,3 +1,7 @@
 .header {
     @apply relative flex items-center px-[60px] w-full h-[60px] border-b-[1px] border-[--color-black];
 }
+
+nav {
+    @apply absolute flex items-center gap-x-[10px] right-[60px] h-[40px];
+}
