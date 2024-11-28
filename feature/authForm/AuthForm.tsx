@@ -1,11 +1,15 @@
 "use client";
 import React from "react";
 
+import { usePathname } from "next/navigation";
+
 import { Button, Form, Input } from "antd";
 
 import "./AuthForm.css";
 
 const AuthForm = () => {
+  const pathname = usePathname();
+
   const onFinish = (values) => {
     console.log("Success:", values);
   };
@@ -23,7 +27,9 @@ const AuthForm = () => {
         onFinishFailed={onFinishFailed}
         className="formWrapper-form"
       >
-        <h1 className="form-title">Вход</h1>
+        <h1 className="form-title">
+          {pathname.includes("signUp") ? "Регистрация" : "Вход"}
+        </h1>
 
         <Form.Item
           label="Никнейм"
@@ -43,7 +49,7 @@ const AuthForm = () => {
 
         <Form.Item label={null}>
           <Button type="primary" htmlType="submit" className="form-button">
-            Войти
+            {pathname.includes("signUp") ? "Зарегестрироваться" : "Войти"}
           </Button>
         </Form.Item>
       </Form>

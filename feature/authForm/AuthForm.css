@@ -11,5 +11,5 @@
 }
 
 .form-button {
-    @apply w-[100px] h-[35px] font-medium;
+    @apply w-auto h-[35px] font-medium;
 }
