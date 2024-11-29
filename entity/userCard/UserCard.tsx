@@ -12,7 +12,7 @@ const UserCard = () => {
 
     return (
         <div className="userCard">
-            <Avatar size={52} icon={<UserOutlined />} style={{ backgroundColor: "#fde3cf", color: "#f56a00" }}/>
+            <Avatar size={64} icon={<UserOutlined />} style={{ backgroundColor: "#fde3cf", color: "#f56a00" }}/>
 
             <p className="userCard-nickname">{Object.keys(user).length !== 0 ? user.name : "Я утка!"}</p>
             

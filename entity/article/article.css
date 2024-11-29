@@ -1,0 +1,19 @@
+.article {
+    @apply py-[20px] px-[30px] w-full h-auto bg-[--color-white] border-y-[1px] border-[--color-black] text-[--color-black] duration-300 ease-in-out;
+}
+
+.article:hover {
+    @apply brightness-[0.975] cursor-pointer;
+}
+
+.article-title {
+    @apply text-[1.25rem] text-left font-bold;
+}
+
+.article-text {
+    @apply mt-[5px] text-[1rem] text-left font-normal opacity-80;
+}
+
+.article-date {
+    @apply mt-[20px] text-[1rem] text-left font-normal opacity-80;
+}
