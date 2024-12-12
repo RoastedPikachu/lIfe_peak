@@ -13,7 +13,7 @@
 }
 
 .clientMain {
-  @apply flex items-start gap-x-[60px] px-[calc((100vw-1320px)/2)];
+  @apply flex items-start gap-x-[60px] mb-[50px] px-[calc((100vw-1320px)/2)];
 }
 
 @media (max-width: 480px) {

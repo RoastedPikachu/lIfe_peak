@@ -76,7 +76,7 @@ const TextEditor = () => {
         },
       )
       .then((res) => {
-        if (res.data.message === "Успешный вход") {
+        if (res.data.message === "Успешное создание статьи") {
           alert("Статья успешно создана");
 
           router.push("/");

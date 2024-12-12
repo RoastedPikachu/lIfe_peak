@@ -1,0 +1,38 @@
+.articleContent {
+    @apply relative pt-[50px] mx-[calc((100%-900px)/2)] w-full max-w-[900px];
+}
+
+.articleContent-title {
+    @apply text-[2.5rem] font-bold;
+}
+
+.articleContent-text {
+    @apply mt-[40px] text-[1.5rem] text-justify font-medium whitespace-pre-wrap;
+}
+
+@media (max-width: 480px) {
+    .articleContent {
+        @apply pt-[30px];
+    }
+
+    .articleContent-title {
+        @apply text-[2rem];
+    }
+
+    .articleContent-text {
+        @apply mt-[10px] text-[1.25rem];
+    }
+}
+@media (max-width: 320px) {
+    .articleContent {
+        @apply pt-[30px];
+    }
+
+    .articleContent-title {
+        @apply text-[1.75rem];
+    }
+
+    .articleContent-text {
+        @apply mt-[10px] text-[1rem];
+    }
+}

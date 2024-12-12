@@ -8,12 +8,12 @@ import bcrypt from "bcryptjs";
 
 import db from "./database";
 
+import { getUsernameFromToken, SECRET_KEY } from "@/utils";
+
 import jwt from "jsonwebtoken";
 
 const app = express();
 const PORT = 3001;
-const SECRET_KEY =
-  "a4b3b679268e4582b61f969c8c62e73959dfcbddeff7fcc25f5016e8ff495cf593b94ee109ea8d9af520a7d5a6fda654206ca7c8080b8b97d735d98803db0b7c5258b1be1231daf53b78b5f59211863336795b9fd9317ece3a0f719bfb63f1e4e2649a85a996ceb65cb6b5ef24a81a88357602629bdc0dec3491d4103856e29d";
 
 app.use(bodyParser.json());
 
@@ -98,7 +98,7 @@ app.post("/api/auth/signIn", (req: any, res: any) => {
           { id: row.id, username: row.username },
           SECRET_KEY,
           {
-            expiresIn: "1h",
+            expiresIn: "720h",
           },
         );
 
@@ -108,6 +108,23 @@ app.post("/api/auth/signIn", (req: any, res: any) => {
       }
     },
   );
+});
+
+app.get("/api/user", (req: any, res: any) => {
+  const authHeader = req.headers.authorization;
+
+  if (!authHeader || !authHeader.startsWith("Bearer ")) {
+    return res.status(401).json({ error: "Токен не предоставлен" });
+  }
+
+  const token = authHeader.split(" ")[1];
+  const username = getUsernameFromToken(token);
+
+  if (!username) {
+    return res.status(401).json({ error: "Неверный или истёкший токен" });
+  }
+
+  res.status(200).json({ username });
 });
 
 app.post("/api/articles", (req: any, res: any) => {
@@ -182,12 +199,21 @@ app.post("/api/comments/:articleId", (req: any, res: any) => {
 
 app.get("/api/articles/:articleId/comments", (req: any, res: any) => {
   const articleId = parseInt(req.params.articleId, 10);
-  try {
-    const comments = db
-      .prepare("SELECT * FROM comments WHERE articleId = ?")
-      .all(articleId);
 
-    res.status(200).json(comments);
+  try {
+    db.all(
+      "SELECT * FROM comments WHERE articleId = ?",
+      [articleId],
+      (err, rows) => {
+        if (err) {
+          console.error("Ошибка при выполнении запроса:", err.message);
+
+          res.status(500).json({ error: "Невозможно получить статьи" });
+        } else {
+          res.status(200).json(rows);
+        }
+      },
+    );
   } catch (error) {
     res.status(500).json({ error: "Невозможно получить комментарии" });
   }

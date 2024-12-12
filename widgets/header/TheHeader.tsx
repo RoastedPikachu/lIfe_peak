@@ -14,6 +14,8 @@ const TheHeader = () => {
 
   const signOut = () => {
     clearLocalStorage();
+
+    changeIsAuthorized(checkAuthStatus());
   };
 
   useEffect(() => {

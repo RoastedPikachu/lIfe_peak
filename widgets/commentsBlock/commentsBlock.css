@@ -1,0 +1,31 @@
+.commentsBlock {
+    @apply relative mx-[calc((100%-900px)/2)] mt-[50px] w-full max-w-[900px];
+}
+
+.commentsBlock-title {
+    @apply text-[2rem] font-bold;
+}
+
+.commentsBlock-textarea {
+    @apply my-[15px] w-full h-[60px] !resize-none;
+}
+
+.commentsWrapper {
+    @apply grid gap-y-[15px] justify-items-start;
+}
+
+.commentsWrapper-comment {
+    @apply w-full h-auto;
+}
+
+.commentsWrapper-comment-name {
+    @apply text-[1.25rem] font-semibold;
+}
+
+.commentsWrapper-comment-date {
+    @apply my-[5px] text-[1rem] font-medium;
+}
+
+.commentsWrapper-comment-text {
+    @apply text-[1rem] font-medium;
+}
