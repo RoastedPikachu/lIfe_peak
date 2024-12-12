@@ -32,7 +32,7 @@ const TextEditor = () => {
 
   const [content, setContent] = useState({} as any);
 
-  const handleEditorStateChange = (editorState) => {
+  const handleEditorStateChange = (editorState: any) => {
     setEditorState(editorState);
   };
 
@@ -54,7 +54,7 @@ const TextEditor = () => {
 
   const handleSubmit = () => {
     const contentState = editorState.getCurrentContent();
-    const rawContent = convertToRaw(contentState) as string;
+    const rawContent = convertToRaw(contentState) as any;
 
     setContent(rawContent);
 
@@ -67,7 +67,7 @@ const TextEditor = () => {
         `${apiPort}/articles`,
         {
           title: title,
-          content: content.blocks.map((line) => line.text).join("|"),
+          content: content.blocks.map((line: any) => line.text).join("|"),
         },
         {
           headers: {

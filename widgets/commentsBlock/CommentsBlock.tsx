@@ -107,7 +107,7 @@ const CommentsBlock = () => {
 
       <div className="commentsWrapper">
         {comments.length ? (
-          comments.map((comment) => (
+          comments.map((comment: any) => (
             <div key={comment.id} className="commentsWrapper-comment">
               <p className="commentsWrapper-comment-name">{comment.username}</p>
 

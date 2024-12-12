@@ -17,7 +17,7 @@ const AuthForm = () => {
 
   const [message, setMessage] = useState("");
 
-  const handleRegister = async (username, password: string) => {
+  const handleRegister = async (username: string, password: string) => {
     try {
       const response = await axios.post(
         `${apiPort}/auth/signUp`,
@@ -35,14 +35,14 @@ const AuthForm = () => {
       setMessage(response.data.message);
 
       router.push("/auth/signIn");
-    } catch (error) {
+    } catch (error: any) {
       console.error("Ошибка регистрации:", error);
 
       setMessage(error.response?.data?.message || "Произошла ошибка!");
     }
   };
 
-  const handleLogin = async (username, password: string) => {
+  const handleLogin = async (username: string, password: string) => {
     try {
       axios
         .post(
@@ -66,14 +66,14 @@ const AuthForm = () => {
             router.push("/");
           }
         });
-    } catch (error) {
+    } catch (error: any) {
       console.error("Ошибка входа:", error);
 
       setMessage(error.response?.data?.message || "Произошла ошибка!");
     }
   };
 
-  const onFinish = (values) => {
+  const onFinish = (values: any) => {
     if (pathname.includes("signIn")) {
       handleLogin(values.username, values.password);
     } else {

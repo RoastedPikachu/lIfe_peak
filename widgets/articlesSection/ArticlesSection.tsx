@@ -24,7 +24,7 @@ const ArticlesSection = () => {
   return (
     <section className="articlesSection">
       {articles.length ? (
-        articles.map((article) => (
+        articles.map((article: any) => (
           <Article key={article.id} article={article} />
         ))
       ) : (

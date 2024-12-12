@@ -74,7 +74,7 @@ app.post("/api/auth/signIn", (req: any, res: any) => {
   db.get(
     `SELECT * FROM users WHERE username = ?`,
     [username],
-    async (err, row) => {
+    async (err: any, row: any) => {
       if (err) {
         res.status(500).json({ error: "Ошибка сервера" });
         return;
