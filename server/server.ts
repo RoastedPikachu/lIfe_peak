@@ -63,7 +63,7 @@ app.post("/api/auth/signUp", async (req, res): Promise<void> => {
   }
 });
 
-app.post("/api/auth/signIn", (req, res) => {
+app.post("/api/auth/signIn", (req: any, res: any) => {
   const { username, password } = req.body;
 
   if (!username || !password) {
@@ -108,6 +108,71 @@ app.post("/api/auth/signIn", (req, res) => {
       }
     },
   );
+});
+
+app.post("/api/articles", (req: any, res: any) => {
+  const { title, content } = req.body;
+
+  try {
+    const stmt = db.prepare(
+      "INSERT INTO articles (title, content) VALUES (?, ?)",
+    );
+
+    const result = stmt.run(title, content) as any;
+
+    const article = db
+      .prepare("SELECT * FROM articles WHERE id = ?")
+      .get(result.lastInsertRowid);
+
+    res.status(201).json(article);
+  } catch (error) {
+    res.status(400).json({ error: "Невозможно создать статью" });
+  }
+});
+
+app.get("/api/articles", (req: any, res: any) => {
+  try {
+    const articles = db.prepare("SELECT * FROM articles").all();
+
+    res.status(200).json(articles);
+  } catch (error) {
+    res.status(500).json({ error: "Невозможно получить статьи" });
+  }
+});
+
+app.post("/api/comments/:articleId", (req: any, res: any) => {
+  const articleId = parseInt(req.params.articleId, 10);
+
+  const { text, username } = req.body;
+
+  try {
+    const stmt = db.prepare(
+      "INSERT INTO comments (text, username, articleId) VALUES (?, ?, ?)",
+    );
+
+    const result = stmt.run(text, username, articleId) as any;
+
+    const comment = db
+      .prepare("SELECT * FROM comments WHERE id = ?")
+      .get(result.lastInsertRowid);
+
+    res.status(201).json(comment);
+  } catch (error) {
+    res.status(400).json({ error: "Невозможно создать комментарий" });
+  }
+});
+
+app.get("/api/articles/:articleId/comments", (req: any, res: any) => {
+  const articleId = parseInt(req.params.articleId, 10);
+  try {
+    const comments = db
+      .prepare("SELECT * FROM comments WHERE articleId = ?")
+      .all(articleId);
+
+    res.status(200).json(comments);
+  } catch (error) {
+    res.status(500).json({ error: "Невозможно получить комментарии" });
+  }
 });
 
 app.listen(PORT, () => {

@@ -20,6 +20,20 @@ db.serialize(() => {
       password TEXT NOT NULL
     )
   `);
+  db.run(`CREATE TABLE IF NOT EXISTS articles (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    content TEXT NOT NULL,
+    createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
+  )`);
+  db.run(`CREATE TABLE IF NOT EXISTS comments (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    text TEXT NOT NULL,
+    createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+    username TEXT NOT NULL,
+    articleId INTEGER,
+    FOREIGN KEY (articleId) REFERENCES articles(id)
+  )`);
 });
 
 export default db;
