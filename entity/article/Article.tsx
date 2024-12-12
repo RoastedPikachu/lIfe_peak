@@ -1,29 +1,60 @@
 "use client";
-import React, {useState} from 'react';
+import React, { useState } from "react";
 
 import "./article.css";
 
-const Article = () => {
-    const [article, setArticle] = useState({});
+const Article: React.FC<{ article: any }> = ({ article }) => {
+  const formatDate = () => {
+    const months = [
+      "января",
+      "февраля",
+      "марта",
+      "апреля",
+      "мая",
+      "июня",
+      "июля",
+      "августа",
+      "сентября",
+      "октября",
+      "ноября",
+      "декабря",
+    ];
 
-    const getTodayDate = () => {
-        const today = new Date();
-        const day = today.getDate();
-        const monthIndex = today.getMonth();
-        const months = ["янв.", "фев.", "мар.", "апр.", "мая", "июн.", "июл.", "авг.", "сен.", "окт.", "нояб.", "дек."];
-        const monthName = months[monthIndex];
+    const date = new Date(article.createdAt);
+    const day = date.getDate();
+    const monthIndex = date.getMonth();
+    const year = date.getFullYear();
 
-        return `${day} ${monthName}`;
+    return `${day} ${months[monthIndex]} ${year}`;
+  };
+
+  const getShortArticleContent = () => {
+    const string = article.content;
+
+    const pipeIndex = string.indexOf("|");
+
+    if (pipeIndex === -1) {
+      return string;
     }
-    return (
-        <div className="article">
-            <p className="article-title">{Object.keys(article).length !== 0 ? article.title : "Заголовок статьи"}</p>
+    return string.substring(0, pipeIndex);
+  };
+  return (
+    <div className="article">
+      <p className="article-title">
+        {Object.keys(article).length !== 0 ? article.title : "Заголовок статьи"}
+      </p>
 
-            <p className="article-text">{Object.keys(article).length !== 0 ? `${article.text.slice(0, 100)}…` : "Очень интересный и длинный текст статьи"}</p>
+      <p className="article-text">
+        {Object.keys(article).length !== 0
+          ? `${getShortArticleContent()}…`
+          : "Очень интересный и длинный текст статьи"}
+      </p>
 
-            <p className="article-date">{Object.keys(article).length !== 0 ? article.createdAt : getTodayDate()}</p>
-        </div>
-    );
+      <p className="article-date">
+        {Object.keys(article).length !== 0 ? formatDate() : "Дата неизвестна"}
+      </p>
+    </div>
+  );
 };
 
 export default Article;

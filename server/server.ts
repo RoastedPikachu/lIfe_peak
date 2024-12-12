@@ -131,13 +131,15 @@ app.post("/api/articles", (req: any, res: any) => {
 });
 
 app.get("/api/articles", (req: any, res: any) => {
-  try {
-    const articles = db.prepare("SELECT * FROM articles").all();
+  db.all("SELECT * FROM articles", [], (err, rows) => {
+    if (err) {
+      console.error("Ошибка при выполнении запроса:", err.message);
 
-    res.status(200).json(articles);
-  } catch (error) {
-    res.status(500).json({ error: "Невозможно получить статьи" });
-  }
+      res.status(500).json({ error: "Невозможно получить статьи" });
+    } else {
+      res.status(200).json(rows);
+    }
+  });
 });
 
 app.post("/api/comments/:articleId", (req: any, res: any) => {

@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 
 import { useRouter } from "next/navigation";
 
+import axios from "axios";
+
 import dynamic from "next/dynamic";
 
 import { EditorState, convertToRaw } from "draft-js";
@@ -23,6 +25,8 @@ const TextEditor = () => {
     EditorState.createEmpty(),
   );
   const [editorLoaded, setEditorLoaded] = useState(false);
+
+  const [title, setTitle] = useState("");
 
   const [content, setContent] = useState({} as any);
 
@@ -51,11 +55,32 @@ const TextEditor = () => {
     const rawContent = convertToRaw(contentState) as string;
 
     setContent(rawContent);
+
+    createArticle(rawContent);
   };
 
-  useEffect(() => {
-    console.table(content.blocks);
-  }, [content]);
+  const createArticle = (content: any) => {
+    axios
+      .post(
+        "http://localhost:3001/api/articles",
+        {
+          title: title,
+          content: content.blocks.map((line) => line.text).join("|"),
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        },
+      )
+      .then((res) => {
+        if (res.data.message === "Успешный вход") {
+          alert("Статья успешно создана");
+
+          router.push("/");
+        }
+      });
+  };
 
   useEffect(() => {
     setEditorLoaded(true);
@@ -71,7 +96,12 @@ const TextEditor = () => {
   }, []);
   return (
     <div className="mt-[30px] w-full">
-      <Input />
+      <Input
+        variant="borderless"
+        placeholder="Введите заголовок статьи"
+        onChange={(event) => setTitle(event.target.value)}
+        className="mb-[20px] px-0 h-[60px] text-[1.5rem] font-bold"
+      />
 
       {editorLoaded && (
         <>
