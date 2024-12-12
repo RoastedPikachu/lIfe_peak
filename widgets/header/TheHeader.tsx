@@ -8,7 +8,7 @@ import "./TheHeader.css";
 
 const TheHeader = () => {
   return (
-    <header className="header ">
+    <header className="header">
       <Image
         src={"/static/FullLogo.svg"}
         alt="Логотип: Simple"

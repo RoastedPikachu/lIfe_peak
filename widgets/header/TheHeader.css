@@ -1,7 +1,7 @@
 .header {
-    @apply relative flex items-center px-[60px] w-full h-[60px] border-b-[1px] border-[--color-black];
+    @apply relative flex items-center px-[calc((100vw-1320px)/2)] w-full h-[60px] border-b-[1px] border-[--color-black];
 }
 
 nav {
-    @apply absolute flex items-center gap-x-[10px] right-[60px] h-[40px];
+    @apply absolute flex items-center gap-x-[10px] right-[calc((100vw-1320px)/2)] h-[40px];
 }
