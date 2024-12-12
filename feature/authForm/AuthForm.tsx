@@ -5,6 +5,8 @@ import { usePathname, useRouter } from "next/navigation";
 
 import axios from "axios";
 
+import { apiPort } from "@/utils";
+
 import { Button, Form, Input } from "antd";
 
 import "./AuthForm.css";
@@ -18,7 +20,7 @@ const AuthForm = () => {
   const handleRegister = async (username, password: string) => {
     try {
       const response = await axios.post(
-        "http://localhost:3001/api/auth/signUp",
+        `${apiPort}/auth/signUp`,
         {
           username: username,
           password: password,
@@ -44,7 +46,7 @@ const AuthForm = () => {
     try {
       axios
         .post(
-          "http://localhost:3001/api/auth/signIn",
+          `${apiPort}/auth/signIn`,
           {
             username: username,
             password: password,

@@ -9,6 +9,8 @@ import dynamic from "next/dynamic";
 
 import { EditorState, convertToRaw } from "draft-js";
 
+import { apiPort } from "@/utils";
+
 import { Button, Input } from "antd";
 
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
@@ -62,7 +64,7 @@ const TextEditor = () => {
   const createArticle = (content: any) => {
     axios
       .post(
-        "http://localhost:3001/api/articles",
+        `${apiPort}/articles`,
         {
           title: title,
           content: content.blocks.map((line) => line.text).join("|"),
