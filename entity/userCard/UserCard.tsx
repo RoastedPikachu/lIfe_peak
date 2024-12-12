@@ -20,15 +20,13 @@ const UserCard = () => {
           className="userCard-avatar"
         />
 
-        <p className="userCard-nickname">
-          {Object.keys(user).length !== 0 ? user.name : "Я утка!"}
-        </p>
+        <p className="userCard-nickname">Борис Карабут</p>
       </div>
 
       <p className="userCard-description">
-        {Object.keys(user).length !== 0
-          ? user.description
-          : "Я постоянно крякаю и клацаю по клавишам, очень люблю хлеб."}
+        Студент, middle frontend разработчик, а также геймер. Здесь вы найдете
+        статьи о веб-разработке, моем игровом опыте и размышлениях на стыке этих
+        сфер.
       </p>
     </div>
   );

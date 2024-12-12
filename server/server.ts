@@ -142,6 +142,22 @@ app.get("/api/articles", (req: any, res: any) => {
   });
 });
 
+app.get("/api/articles/:id", (req: any, res: any) => {
+  const articleId = req.params.id;
+
+  db.get("SELECT * FROM articles WHERE id = ?", [articleId], (err, row) => {
+    if (err) {
+      console.error("Ошибка при выполнении запроса:", err.message);
+
+      res.status(500).json({ error: "Невозможно получить статью" });
+    } else if (!row) {
+      res.status(404).json({ error: "Статья не найдена" });
+    } else {
+      res.status(200).json(row);
+    }
+  });
+});
+
 app.post("/api/comments/:articleId", (req: any, res: any) => {
   const articleId = parseInt(req.params.articleId, 10);
 
