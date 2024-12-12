@@ -1,0 +1,9 @@
+.articlesSection {
+    @apply relative mt-[30px] w-[calc(100%-420px)] h-auto;
+}
+
+@media (max-width: 480px) {
+    .articlesSection {
+        @apply mt-[170px] w-full;
+    }
+}

@@ -7,6 +7,8 @@ import { apiPort } from "@/utils";
 
 import Article from "@/entity/article/Article";
 
+import "./articlesSection.css";
+
 const ArticlesSection = () => {
   const [articles, setArticles] = useState([] as any);
 
@@ -20,7 +22,7 @@ const ArticlesSection = () => {
     getArticles();
   }, []);
   return (
-    <section className="relative mt-[30px] w-[calc(100%-420px)] h-auto">
+    <section className="articlesSection">
       {articles.length ? (
         articles.map((article) => (
           <Article key={article.id} article={article} />

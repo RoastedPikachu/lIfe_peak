@@ -17,3 +17,21 @@
 .article-date {
     @apply mt-[20px] text-[1rem] text-left font-normal opacity-80;
 }
+
+@media (max-width: 480px) {
+    .article {
+        @apply py-[10px] px-[15px];
+    }
+
+    .article-title {
+        @apply text-[1.125rem];
+    }
+
+    .article-text {
+        @apply text-[0.875rem];
+    }
+
+    .article-date {
+        @apply mt-[10px];
+    }
+}

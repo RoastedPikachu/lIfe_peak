@@ -11,3 +11,13 @@
   margin: 0;
   padding: 0;
 }
+
+.clientMain {
+  @apply flex items-start gap-x-[60px] px-[calc((100vw-1320px)/2)];
+}
+
+@media (max-width: 480px) {
+  .clientMain {
+    @apply px-[20px];
+  }
+}

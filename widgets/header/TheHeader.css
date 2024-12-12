@@ -2,6 +2,32 @@
     @apply relative flex items-center px-[calc((100vw-1320px)/2)] w-full h-[60px] border-b-[1px] border-[--color-black];
 }
 
+.header-logo {
+    @apply ml-[-20px];
+}
+
 nav {
     @apply absolute flex items-center gap-x-[10px] right-[calc((100vw-1320px)/2)] h-[40px];
+}
+
+@media (max-width: 480px) {
+    .header {
+        @apply px-[20px];
+    }
+
+    nav {
+        @apply right-[20px];
+    }
+}
+
+@media (max-width: 380px) {
+    .header-logo {
+        @apply w-[140px];
+    }
+}
+
+@media (max-width: 320px) {
+    .header-logo {
+        @apply w-[120px];
+    }
 }

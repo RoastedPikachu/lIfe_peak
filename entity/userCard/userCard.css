@@ -9,3 +9,13 @@
 .userCard-description {
     @apply text-[--color-black] text-[1rem] text-left font-normal opacity-80;
 }
+
+@media (max-width: 480px) {
+    .userCard {
+        @apply absolute w-full py-[20px] px-0;
+    }
+
+    .userCard > div {
+        @apply flex items-center gap-x-[20px] w-full;
+    }
+}

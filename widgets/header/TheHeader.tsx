@@ -26,6 +26,7 @@ const TheHeader = () => {
         alt="Логотип: Simple"
         width={160}
         height={40}
+        className="header-logo"
       />
 
       <nav>
