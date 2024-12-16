@@ -77,7 +77,7 @@ const TextEditor = () => {
       )
       .then((res) => {
         if (res.data.message === "Успешное создание статьи") {
-          alert("Статья успешно создана");
+          alert("Новость успешно создана");
 
           router.push("/");
         }
@@ -89,18 +89,18 @@ const TextEditor = () => {
 
     const token = getTokenFromLocalStorage();
 
-    if (
-      token !==
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJ0ZXN0IiwiaWF0IjoxNzM0MDA3NDUwLCJleHAiOjE3MzQwMTEwNTB9.o0OYIVl7F_fwJinP8IgM_udWtIYvYGCKMREFgewOwR8"
-    ) {
-      router.push("/");
-    }
+    // if (
+    //   token !==
+    //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJ0ZXN0IiwiaWF0IjoxNzM0MDA3NDUwLCJleHAiOjE3MzQwMTEwNTB9.o0OYIVl7F_fwJinP8IgM_udWtIYvYGCKMREFgewOwR8"
+    // ) {
+    //   router.push("/");
+    // }
   }, []);
   return (
     <div className="mt-[30px] w-full">
       <Input
         variant="borderless"
-        placeholder="Введите заголовок статьи"
+        placeholder="Введите заголовок новости"
         onChange={(event) => setTitle(event.target.value)}
         className="mb-[20px] px-0 h-[60px] text-[1.5rem] font-bold"
       />

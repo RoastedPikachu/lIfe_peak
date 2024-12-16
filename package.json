@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "server": "nodemon server/server.ts"
+    "server": "npx tsx server/server.ts"
   },
   "dependencies": {
     "antd": "^5.22.2",

@@ -45,13 +45,13 @@ const Article: React.FC<{ article: any }> = ({ article }) => {
         <p className="article-title">
           {Object.keys(article).length !== 0
             ? article.title
-            : "Заголовок статьи"}
+            : "Заголовок новости"}
         </p>
 
         <p className="article-text">
           {Object.keys(article).length !== 0
             ? `${getShortArticleContent()}…`
-            : "Очень интересный и длинный текст статьи"}
+            : "Очень интересный и длинный текст новости"}
         </p>
 
         <p className="article-date">
