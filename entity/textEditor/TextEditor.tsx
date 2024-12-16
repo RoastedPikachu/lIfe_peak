@@ -76,11 +76,9 @@ const TextEditor = () => {
         },
       )
       .then((res) => {
-        if (res.data.message === "Успешное создание статьи") {
           alert("Новость успешно создана");
 
           router.push("/");
-        }
       });
   };
 
