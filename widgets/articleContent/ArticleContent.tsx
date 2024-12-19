@@ -39,13 +39,13 @@ const ArticleContent = () => {
         <h1 className="articleContent-title">
           {Object.keys(article as Object).length
             ? article.title
-            : "Заголовок статьи"}
+            : "Заголовок новости"}
         </h1>
 
         <p className="articleContent-text">
           {Object.keys(article as Object).length
             ? content
-            : "Содержимое статьи"}
+            : "Содержимое новости"}
         </p>
       </section>
 

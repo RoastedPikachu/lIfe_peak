@@ -1,32 +1,27 @@
-"use client";
-import React, { useState } from "react";
+import React from "react";
 
 import { Avatar } from "antd";
-
-import { UserOutlined } from "@ant-design/icons";
 
 import "./userCard.css";
 
 const UserCard = () => {
-  const [user, setUser] = useState({} as any);
-
   return (
     <div className="userCard">
       <div>
         <Avatar
           size={64}
-          icon={<UserOutlined />}
+          src={"/static/UKAvatar.svg"}
           style={{ backgroundColor: "#fde3cf", color: "#f56a00" }}
           className="userCard-avatar"
         />
 
-        <p className="userCard-nickname">Борис Карабут</p>
+        <p className="userCard-nickname">УК Фиксики Интернешнл</p>
       </div>
 
       <p className="userCard-description">
-        Студент, middle frontend разработчик, а также геймер. Здесь вы найдете
-        статьи о веб-разработке, моем игровом опыте и размышлениях на стыке этих
-        сфер.
+        Обеспечиваем комфорт и безопасность жильцов ЖК уже 15 лет.
+        Профессиональный подход, быстрое решение проблем, прозрачная отчетность.
+        Мы заботимся о ваших домах!
       </p>
     </div>
   );

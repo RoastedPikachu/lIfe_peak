@@ -25,7 +25,7 @@ const TheHeader = () => {
     <header className="header">
       <Image
         src={"/static/FullLogo.svg"}
-        alt="Логотип: Simple"
+        alt="Логотип: Life_Peak"
         width={160}
         height={40}
         className="header-logo"
@@ -43,7 +43,7 @@ const TheHeader = () => {
             </Button>
           </>
         ) : (
-          <Button href="/auth/signUp" type={"primary"} onClick={signOut}>
+          <Button type={"primary"} onClick={signOut}>
             Выйти
           </Button>
         )}
